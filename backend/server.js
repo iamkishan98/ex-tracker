@@ -16,7 +16,7 @@ const port = process.env.PORT || 5000
 app.use(cors({
     methods: 'GET,POST,PATCH,DELETE,OPTIONS',
     optionsSuccessStatus: 200,
-    origin: 'http://localhost:3000'
+    //origin: 'http://localhost:3000'
   }));
 app.options('*', cors());
 
