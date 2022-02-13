@@ -35,7 +35,7 @@ export default class CreateUser extends Component{
             username: this.state.username
         }
 
-        axios.post('http://localhost:5000/users/add',userdet,
+        axios.post('/users/add',userdet,
         {
             headers: {'Content-Type': 'application/json'}
         })

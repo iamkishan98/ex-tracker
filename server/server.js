@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
+const path = require("path")
 
 require('dotenv').config()
 
@@ -11,7 +12,8 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
 });
-const port = process.env.PORT || 5000
+const port = 5000
+
 
 app.use(cors({
     methods: 'GET,POST,PATCH,DELETE,OPTIONS',
@@ -22,9 +24,13 @@ app.options('*', cors());
 
 app.use(express.json())
 
-if(process.env.NODE_ENV == "production"){
-    app.use(express.static('./client/build'));
-}
+//  Adding production deployment config code
+app.use(express.static(path.join(__dirname,'build')));
+
+app.get('/', (req,res)=>{
+    res.sendFile(path.join(__dirname, 'build','index.html'))
+})
+
 
 const uri = process.env.ATLAS_URI
 

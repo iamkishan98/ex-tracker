@@ -16,7 +16,7 @@ export default function EditExercise(props){
 
   const getex = async (id) =>{
     console.log(id)
-    const res = await axios.get("http://localhost:5000/exercises/"+id,{
+    const res = await axios.get("/exercises/"+id,{
       headers : {'Content-Type': 'application/json'}
     })
 
@@ -48,7 +48,7 @@ export default function EditExercise(props){
     };
     console.log(updateduser)
     
-    axios.post('http://localhost:5000/exercises/'+id,updateduser,
+    axios.post('/exercises/'+id,updateduser,
     {
       headers:{ 'Content-Type' : 'application/json'}
     })

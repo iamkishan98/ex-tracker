@@ -32,7 +32,7 @@ export default class CreateExercise extends Component{
 
         const getusers = async ()=> {
 
-            const result = await axios.get('http://localhost:5000/users/',{
+            const result = await axios.get('/users/',{
                 headers : { 'Content-Type': 'application/json'}
             })
             
@@ -82,7 +82,7 @@ export default class CreateExercise extends Component{
         }
         console.log(newex)
 
-        axios.post('http://localhost:5000/exercises/add',newex,
+        axios.post('/exercises/add',newex,
         {
             headers : {'Content-Type': 'application/json' }
         })
