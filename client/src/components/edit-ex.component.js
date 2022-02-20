@@ -32,10 +32,10 @@ export default function EditExercise(props){
     console.log("In a constructor")
     console.log(id)
     getex(id)
-  }, [])
+  }, [  ])
 
 
-  onsubmit = (e) =>
+  onsubmit = async (e) =>
   {
     e.preventDefault();
 
@@ -48,14 +48,21 @@ export default function EditExercise(props){
     };
     console.log(updateduser)
     
-    axios.post('/exercises/'+id,updateduser,
+    try
     {
-      headers:{ 'Content-Type' : 'application/json'}
-    })
-    .then( (res)=>{
-      console.log(res.data)
-    })
-    .catch((error)=>{ console.log(error.data)})
+      let result = await axios.post('/exercises/'+id,updateduser,
+      {
+        headers:{ 'Content-Type' : 'application/json'}
+      });
+
+      if(result && result.data){
+        console.log(result.data)
+      }
+    }
+    catch(error)
+    {
+      console.log(error.data)
+    }
 
     window.location ="/";
   }

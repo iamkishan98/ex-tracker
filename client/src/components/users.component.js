@@ -28,20 +28,23 @@ export default class CreateUser extends Component{
         })
     }
 
-    onSubmit(event){
+    async onSubmit(event){
         event.preventDefault()
 
         const userdet = {
             username: this.state.username
         }
 
-        axios.post('/users/add',userdet,
-        {
-            headers: {'Content-Type': 'application/json'}
-        })
-        .then( (response) =>{ console.log(response.data)})
-        .catch((err)=>{ console.log(err.response.data)})
-
+        try{
+            let response = await axios.post('/users/add',userdet,
+            {
+                headers: {'Content-Type': 'application/json'}
+            })
+            console.log(response.data)
+        }
+        catch(err){
+            console.log(err.response.data)
+        }
         //window.location= '/'
     }
 

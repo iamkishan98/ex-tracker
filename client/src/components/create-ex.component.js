@@ -70,7 +70,7 @@ export default class CreateExercise extends Component{
         })
     }
 
-    onSubmit(event){
+    async onSubmit(event){
         
         event.preventDefault()
 
@@ -82,16 +82,17 @@ export default class CreateExercise extends Component{
         }
         console.log(newex)
 
-        axios.post('/exercises/add',newex,
-        {
-            headers : {'Content-Type': 'application/json' }
-        })
-        .then(response => console.log(response.data))
-        .catch(err => console.log(err.response.data))
+        try{
+            let response = await axios.post('/exercises/add',newex,
+            {
+                headers : {'Content-Type': 'application/json' }
+            })
+            console.log(response.data)
+        }
+        catch(err){
+            console.log(err.data)
+        }
 
-        //console.log(response.data)
-
-        //window.location = '/';
     }
 
     render(){

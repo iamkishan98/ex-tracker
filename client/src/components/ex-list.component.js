@@ -23,23 +23,34 @@ export default class ExercisesList extends Component {
     this.state = {exercises: []};
   }
 
-  componentDidMount() {
-    axios.get('/exercises/')
-      .then(response => {
-        this.setState({ exercises: response.data })
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+  async componentDidMount() {
+    
+    try{
+
+      let response = await axios.get('/exercises/')
+      this.setState({ exercises: response.data })
+  
+    }
+    catch(error){
+      console.log(error.data)
+    }
+
   }
 
-  deleteExercise(id) {
-    axios.delete('/exercises/'+id)
-      .then(response => { console.log(response.data)});
+  async deleteExercise(id) {
+
+    try{
+      let response = await axios.delete('/exercises/'+id)
+      console.log(response.data)
+    }
+    catch(error){
+      console.log(error.data)
+    }
 
     this.setState({
       exercises: this.state.exercises.filter(el => el._id !== id)
     })
+
   }
 
   exerciseList() {
