@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState,useMemo,useEffect } from 'react'
+import { useState,useMemo} from 'react'
 import { useParams} from 'react-router-dom'
 import axios from 'axios'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -12,7 +12,6 @@ export default function EditExercise(props){
   const [description,setdescription] = useState('');
   const [duration,setduration] = useState(0);
   const [date,setdate] = useState(new Date());
-  const [users,setusers] = useState(['test user']);
 
   const getex = async (id) =>{
     console.log(id)
@@ -32,7 +31,7 @@ export default function EditExercise(props){
     console.log("In a constructor")
     console.log(id)
     getex(id)
-  }, [  ])
+  }, [])
 
 
   onsubmit = async (e) =>

@@ -1,7 +1,6 @@
 import React,{Component} from 'react'
 //import { BrowserRouter as Router,Route } from 'react-router-dom'
 import {Link} from 'react-router-dom'
-import { withRouter } from 'react-router'
 export default class Navbar extends Component{
     render(){
         return(
