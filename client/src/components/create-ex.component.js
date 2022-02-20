@@ -93,6 +93,8 @@ export default class CreateExercise extends Component{
             console.log(err.data)
         }
 
+        window.location = "/"
+
     }
 
     render(){
